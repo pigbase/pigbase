@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://pigbase.ga/">Official site</a> -
-  <a href="#installation">Install</a> -
+  <a href="INSTALLATION.md">Install</a> -
   <a href="https://docs.pigbase.ga/">Documentation</a> -
   <a href="TODO.md">TODO</a>
 </p>
