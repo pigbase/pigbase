@@ -1,0 +1,22 @@
+# TODO
+- [ ] Database
+  - [ ] Create websocket to communicate with database
+  - [ ] System to save data
+  - [ ] Create first saving operations
+- [ ] Create library for:
+    - [ ] JavaScript
+    - [ ] GoLang
+    - [ ] Ruby
+    - [ ] V
+    - [ ] Python
+    - [ ] TypeScript
+    - [ ] C++
+    - [ ] Rust
+    - [ ] C
+    - [ ] C#
+    - [ ] Elixir
+- [ ] Create site
+  - [ ] Backend
+  - [ ] Frontend
+  - [ ] Domain
+  - [ ] Hosting
