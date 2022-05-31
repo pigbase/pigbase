@@ -1,6 +1,6 @@
 # TODO
-- [ ] Database
-  - [ ] Create websocket to communicate with database
+- [x] Database
+  - [x] Create websocket to communicate with database
   - [ ] System to save data
   - [ ] Create first saving operations
 - [ ] Create library for:
