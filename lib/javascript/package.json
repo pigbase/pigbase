@@ -1,0 +1,26 @@
+{
+  "name": "pigbase",
+  "version": "1.0.0",
+  "description": "Pigbase is non-relational object database, this package will help you to connect with you're database and start writing cool staff",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pigbase/pigbase.git"
+  },
+  "keywords": [
+    "pigbase",
+    "database",
+    "base",
+    "library",
+    "lib"
+  ],
+  "author": "solindek <ytsolindekttv@gmail.com> (https://www.npmjs.com/~solindek)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/pigbase/pigbase/issues"
+  },
+  "homepage": "https://github.com/pigbase/pigbase#readme"
+}
