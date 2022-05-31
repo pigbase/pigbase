@@ -32,8 +32,8 @@ func socketHandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func Init() {
-	log.Fatal("Starting websocket server")
+func InitWebsocket() {
+	log.Println("Starting websocket server")
 	http.HandleFunc("/socket", socketHandler)
 	log.Fatal(http.ListenAndServe("localhost:8080", nil))
 }
