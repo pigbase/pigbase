@@ -1,42 +1,76 @@
 package main
 
 import (
-	"errors"
+	"encoding/json"
 	"log"
 	"os"
 	"runtime"
 )
 
-func PathOfFile() string {
-	os := runtime.GOOS
-	outputPath := ""
-	switch os {
+type Account struct {
+	Name string `json:"name"`
+	Hash string `json:"hash"`
+	Salt string `json:"salt"`
+}
+
+type Value struct {
+	Value interface{} `json:"value"`
+	Type  string      `json:"type"`
+}
+
+type Collection struct {
+	Name   string  `json:"name_of_collection"`
+	Values []Value `json:"values"`
+}
+
+type Data struct {
+	Accounts    []Account    `json:"accounts"`
+	Collections []Collection `json:"collections"`
+}
+
+func GetDataFilePath() string {
+	path := ""
+	switch runtime.GOOS {
 	case "windows":
-		outputPath = "C:\\Program Files\\Pigbase\\data"
-		outputPath = "operatingSystemIsNotSupported"
-		break
+		path = "C:\\Program Files\\Pigbase\\data"
 	case "linux":
-		outputPath = "/opt/pigbase/data"
-		break
-	case "darwin":
-		outputPath = "operatingSystemIsNotSupported"
-		break
-	default:
-		outputPath = "operatingSystemIsNotSupported"
-		break
+		path = "/opt/pigbase/data"
 	}
-	if outputPath == "operatingSystemIsNotSupported" {
-		log.Fatalf("You're actuall operating system is not supported. Actual OS: %s\n", os)
-	}
-	return outputPath
+	return path
 }
 
-func InitData() {
-	if _, err := os.Stat("./data.encoded"); err == nil {
+func GetDataFile() string {
+	value, err := os.ReadFile(GetDataFilePath())
 
-	} else if errors.Is(err, os.ErrNotExist) {
-
-	} else {
-
+	if err != nil {
+		log.Fatalf("Error while reading data file: %s", err)
 	}
+
+	val := string(value)
+
+	return val
 }
+
+func DataFileToObject(value string) Data {
+	var data Data
+	json.Unmarshal([]byte(value), &data)
+
+	return data
+}
+
+func (d Data) SaveDataConfig() {
+	buffer, err := json.Marshal(d)
+	if err != nil {
+		log.Fatal("Error while creating string from object.")
+	}
+	err = os.WriteFile(GetDataFilePath(), buffer, 0666)
+	if err != nil {
+		log.Fatalf("Error while writing into data file. %s", err)
+	}
+	log.Printf("Saved data file.")
+}
+
+// f := DataFileToObject(GetDataFile())
+// f.Collections[0].Values[0].Value = "Ceska republika"
+// f.Collections[0].Values[0].Type = "String"
+// f.SaveDataConfig()

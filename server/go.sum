@@ -1,2 +1,8 @@
 github.com/gorilla/websocket v1.5.0 h1:PPwGk2jz7EePpoHN/+ClbZu8SPxiqlu12wZP/3sWmnc=
 github.com/gorilla/websocket v1.5.0/go.mod h1:YR8l580nyteQvAITg2hZ9XVh4b55+EU/adAjf1fMHhE=
+github.com/pkg/errors v0.9.1 h1:FEBLx1zS214owpjy7qsBeixbURkuhQAwrK5UwLGTwt4=
+github.com/pkg/errors v0.9.1/go.mod h1:bwawxfHBFNV+L2hUp1rHADufV3IMtnDRdf1r5NINEl0=
+github.com/roberthodgen/password v0.0.0-20180704011637-85e20bf60f5a h1:DzRoLnPXx4xlRMXCgaGQYAg/tA7WymxItRSvaTHppRY=
+github.com/roberthodgen/password v0.0.0-20180704011637-85e20bf60f5a/go.mod h1:KfsG1wqMnQtSQ7zyDT4AMpL0SOw0Mo2yb16/B6LXn6Q=
+github.com/speps/go-hashids/v2 v2.0.1 h1:ViWOEqWES/pdOSq+C1SLVa8/Tnsd52XC34RY7lt7m4g=
+github.com/speps/go-hashids/v2 v2.0.1/go.mod h1:47LKunwvDZki/uRVD6NImtyk712yFzIs3UF3KlHohGw=

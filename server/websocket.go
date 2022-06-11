@@ -1,6 +1,8 @@
 package main
 
 import (
+	"encoding/json"
+	"fmt"
 	"log"
 	"net/http"
 
@@ -9,7 +11,21 @@ import (
 
 var upgrader = websocket.Upgrader{}
 
-func socketHandler(w http.ResponseWriter, r *http.Request) {
+func Loop(conn *websocket.Conn) {
+	for {
+		messageType, message, err := conn.ReadMessage()
+		if err != nil {
+			log.Println("Error during message reading:", err)
+			break
+		}
+		log.Printf("Received: Message: %s, Message Type: %d", message, messageType)
+		req := Request{}
+		err = json.Unmarshal(message, &req)
+		fmt.Printf("%v", req)
+	}
+}
+
+func SocketHandler(w http.ResponseWriter, r *http.Request) {
 	conn, err := upgrader.Upgrade(w, r, nil)
 	if err != nil {
 		log.Print("Error during connection upgradation:", err)
@@ -17,23 +33,11 @@ func socketHandler(w http.ResponseWriter, r *http.Request) {
 	}
 	defer conn.Close()
 
-	for {
-		// messageType, message, err := conn.ReadMessage()
-		// if err != nil {
-		// 	log.Println("Error during message reading:", err)
-		// 	break
-		// }
-		// log.Printf("Received: %s, %d", message, messageType)
-		// err = conn.WriteMessage(messageType, message)
-		// if err != nil {
-		// 	log.Println("Error while sending message:", err)
-		// 	break
-		// }
-	}
+	Loop(conn)
 }
 
 func InitWebsocket() {
 	log.Println("Starting websocket server")
-	http.HandleFunc("/socket", socketHandler)
+	http.HandleFunc("/socket", SocketHandler)
 	log.Fatal(http.ListenAndServe("localhost:8080", nil))
 }

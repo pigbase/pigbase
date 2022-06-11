@@ -9,7 +9,6 @@
     - [ ] Ruby
     - [ ] V
     - [ ] Python
-    - [ ] TypeScript
     - [ ] C++
     - [ ] Rust
     - [ ] C
